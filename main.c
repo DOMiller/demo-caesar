@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <caesar.h>
+#include <limits.h>
 #include <tis_builtin.h>
 
 void gen_test(int user_shift, int len, char *str)
@@ -34,7 +35,8 @@ int main(void)
     printf("\nTest 3: Shift with all possible input\n");
     int user_shift;
     tis_make_unknown(&user_shift, sizeof user_shift);
-    gen_test(user_shift, len, str);
+    if (user_shift != INT_MIN)
+        gen_test(user_shift, len, str);
 
     return 0;
 }

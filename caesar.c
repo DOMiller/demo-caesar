@@ -7,6 +7,7 @@ void check_magic_number(void)
     int i = 0 << (int)c;
 }
 
+/*@ requires INT_MIN < x <= INT_MAX; */
 int absolute_int(int x)
 {
     int abs_x;
