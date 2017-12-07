@@ -17,34 +17,38 @@ int absolute_int(int x)
     return abs_x;
 }
 
-char *encrypt(char *str, int d)
+char *encrypt(char *str, int len, int d)
 {
     int shift = absolute_int(d);
     int i = 0;
-    char *buf = (char *)malloc(33);
+    char *buf = (char *)malloc(len);
 
-    while (*str) {
-        /* Spaces are not encrypted. */
-        buf[i] = *str == ' ' ? ' ' : *str + (char)shift;
-        i++;
-        str++;
+    if (buf) {
+        while (*str) {
+            /* Spaces are not encrypted. */
+            buf[i] = *str == ' ' ? ' ' : *str + (char)shift;
+            i++;
+            str++;
+        }
+        buf[i] = '\0';
     }
-    buf[i] = '\0';
     return buf;
 }
 
-char *decrypt(char *str, int d)
+char *decrypt(char *str, int len, int d)
 {
     int shift = absolute_int(d);
     int i = 0;
-    char *buf = (char *)malloc(33);
+    char *buf = (char *)malloc(len);
 
-    while (*str) {
-        /* Spaces are not decrypted. */
-        buf[i] = *str == ' ' ? ' ' : *str - (char)shift;
-        i++;
-        str++;
+    if (buf) {
+        while (*str) {
+            /* Spaces are not decrypted. */
+            buf[i] = *str == ' ' ? ' ' : *str - (char)shift;
+            i++;
+            str++;
+        }
+        buf[i] = '\0';
     }
-    buf[i] = '\0';
     return buf;
 }
